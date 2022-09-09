@@ -8,9 +8,11 @@ ws.onopen = function () {
 document.querySelector('form').onsubmit = ev => {
     ev.preventDefault();
     const input = document.querySelector('input');
-    ws.send(input.value);
-    showMessage(input.value, true);
-    input.value = '';
+    if (input.value) {
+        ws.send(input.value);
+        showMessage(input.value, true);
+        input.value = '';
+    }
 }
 
 
